@@ -3,14 +3,15 @@
 
 class InputUtility:
 
-    def integerValidation(self,message):
-        # Function to validate integer input type from user
+    def integerValidation(self,message):        # Function to validate integer input type from user
+
         """
         INPUT
 
         message=message to be shown when to ask for the input
 
         """
+
         while True:
             try:
                 return int(input(message))
@@ -20,8 +21,8 @@ class InputUtility:
 
 
 
-    def textValidation(self,message,valid_values=[]):
-        # Function to validate input type from user with only valid values
+    def textValidation(self,message,valid_values=[]):       # Function to validate input type from user with only valid values
+
         """
         INPUT
 
@@ -29,6 +30,7 @@ class InputUtility:
         valid_values=List of valid values which is acceptable or are valid inputs
 
         """
+
         while True:
             try:
                 input_value=input(message);
@@ -44,8 +46,10 @@ class InputUtility:
                 x,y=inst.args
                 print(y)
 
-    def integerRangeValidation(self,message,start,end):
-        # Function to validate integer input type from user with only values between start and end
+
+    def integerRangeValidation(self,message,start,end): # Function to validate integer input type from user with only
+        # values between start and end
+
         """
         INPUT
 
@@ -54,6 +58,7 @@ class InputUtility:
         end=Ending point of range
 
         """
+
         while True:
             try:
                 input_value=self.integerValidation(message);
@@ -67,7 +72,6 @@ class InputUtility:
             except Exception as inst:
                 x,y=inst.args
                 print(y)
-
 
 
 
