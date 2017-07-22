@@ -21,10 +21,15 @@ class FileUtility:
 
         parser = etree.XMLParser(dtd_validation=True);
         tree = etree.parse(filename, parser);
-        if tree:
-            return True
-        else:
-            return False
+        try:
+            if tree:
+                return True
+            else:
+                return False
+        except Exception as inst:
+            x, y = inst.args
+            print(y)
+
 
     @staticmethod
     def generate_xml(radius, length):
