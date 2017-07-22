@@ -1,4 +1,5 @@
 from lxml import etree
+import os
 
 
 class FileUtility:
@@ -27,19 +28,21 @@ class FileUtility:
         """
         INPUT
 
-        radius=Radis which is taken as input from user
+        radius=Radius which is taken as input from user
         length=which is output after doing calculation
 
         """
 
-        root = etree.Element('TestResult');
-        child_radius = etree.Element('radius');
-        child_radius.text = radius;
-        root.append(child_radius);
-        child = etree.Element('length');
-        child.text = length;
-        root.append(child);
-        s = etree.tostring(root, pretty_print=True);
+        # create XML
+        root = etree.Element('TestResult')
+        child1 = etree.SubElement(root, "Radius")
+        child1.text=str(radius)
+        child2 = etree.SubElement(root, "Length")
+        child2.text = str(length)
+
+        # pretty string
+        s=etree.tostring(root, pretty_print=True)
+
         return s
 
 
@@ -54,9 +57,14 @@ class FileUtility:
         text= text which needs to be write into the filename
         """
 
-        file = open(filename,mode);
-        file.write(text);
-        print (file);
+        filepath = os.path.join('../../../../resources/result/XMLFile', filename + ".xml")
+        file = open(filepath, mode);
+        file.write(str(text));
+        if mode=="w":
+            print ("File "+filename+".xml created successfully");
+        else:
+            print("File " + filename + ".xml appended successfully");
+
         file.close();
 
 
@@ -83,8 +91,8 @@ class FileUtility:
         mode=valid values w,a. whether to create new file or append the result in previous file.
         text= text which needs to be write into the filename
         """
-
-        file = open(filename+".txt",mode);
+        filepath = os.path.join('../resources/result/TestFile', filename+".txt")
+        file = open(filepath,mode);
         file.write(text);
 
         if mode=="w":
@@ -93,3 +101,9 @@ class FileUtility:
             print("File " + filename + ".txt" + " is appended successfully!");
 
         file.close();
+
+
+obj=FileUtility()
+print(obj.generateXml(2,4))
+
+# print(obj.createXMLFile("hello","w",obj.generateXml()))
