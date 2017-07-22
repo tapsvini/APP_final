@@ -7,23 +7,24 @@ class FileUtility:
     """The class provides the basic functions to deal with file like creation of xml or text file, validating xml file
     finding weather file exist or not"""
 
+
     @staticmethod
     def validate_xml(filename):
 
         """Function to validate generated Xml with dtd.
 
-        :param filename:filename(which should be xml) which is required to be validated
+        :param filename:filename(which should be xml) which is required to be validated with full path
         :type filename:string
-        :return: Print 'Validated' if it is wel formed and checked with schema, else 'Not Validated'
-        :type: void
+        :return: True if xml file is validated else False.
+        :type: Boolean
         """
 
         parser = etree.XMLParser(dtd_validation=True);
         tree = etree.parse(filename, parser);
         if tree:
-            print("Validated");
+            return True
         else:
-            print("Not Validated");
+            return False
 
     @staticmethod
     def generate_xml(radius, length):
@@ -68,7 +69,7 @@ class FileUtility:
         return os.path.exists(file_path)
 
     @staticmethod
-    def create_xml_file(filename, mode, text):
+    def create_xml_file(filename,text):
 
         """Function to write text into given xml file name.
 
@@ -83,28 +84,24 @@ class FileUtility:
         """
 
         filepath = os.path.join('../../../../resources/result/XMLFile', filename + ".xml")
-        file_exist=os.path.exists(filepath)
 
-        xml_head_txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+"<!DOCTYPE TestResult SYSTEM \"sample.dtd\">\n"
+        xml_head_txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+"<!DOCTYPE Cheers SYSTEM \"cheers.dtd\">\n<Cheers>"
 
+        file = open(filepath, "w");
 
-        file = open(filepath, mode);
-
-        if mode=="w":
-            file.write(xml_head_txt+str(text));
-            print ("File "+filename+".xml created successfully. Thanks for using our application!");
-        else:
-            if file_exist:
-                file.write(str(text));
-                print("File " + filename + ".xml appended successfully. Thanks for using our application!");
-            else:
-                file.write(xml_head_txt+str(text));
-                print("File " + filename + ".xml created successfully. Thanks for using our application!");
-
+        file.write(xml_head_txt+str(text)+"\n</Cheers>");
+        print ("File "+filename+".xml created successfully. Thanks for using our application!");
         file.close();
 
+        if FileUtility.validate_xml(filepath):
+            print("Your XML file has been validated with cheers.dtd scheme!")
+        else:
+            print("XML file formed is not validated and may contain error")
+
+
+
     @staticmethod
-    def formt_txt_result(radius, length):
+    def form_txt_result(radius, length):
 
         """Function to format the output of the program for writing into text file.
 
@@ -120,14 +117,12 @@ class FileUtility:
                                                              "one circle = "+str(length)+"\n\n"
 
     @staticmethod
-    def crt_txt_file(filename, mode, text):
+    def crt_txt_file(filename,text):
 
         """Function to write text into given file name.
 
         :param filename:Filename where results should be saved
         :type filename:string
-        :param mode:valid values w,a. whether to create new file or append the result in previous file.
-        :type mode:string
         :param text:text which needs to be write into the filename
         :type text:string
         :return: print success or unsuccess message.
@@ -135,17 +130,9 @@ class FileUtility:
         """
 
         filepath = os.path.join('../resources/result/TestFile', filename+".txt")
-        file = open(filepath,mode);
+        file = open(filepath,"w");
         file.write(text);
 
-        if mode=="w":
-            print ("File "+filename+".txt"+" is created successfully!. Thanks for using our application!");
-        else:
-            print("File " + filename + ".txt" + " is appended successfully!. Thanks for using our application!");
+        print ("File "+filename+".txt"+" is created successfully!. Thanks for using our application!")
 
         file.close();
-
-
-
-# print(FileUtility.validate_xml("result.xml"))
-print(FileUtility.crt_txt_file.__doc__)

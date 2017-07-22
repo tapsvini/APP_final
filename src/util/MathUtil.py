@@ -5,6 +5,7 @@ from src.util.UserInputUtil import InputUtility
 class MathUtility:
     """This class provides the functionality to calculate value of sin and cos using tayler series, calculate value of
     pi using chudnovsky algorithm or to find the factorial and round off number of a number"""
+
     @staticmethod
     def factorial(num):
 

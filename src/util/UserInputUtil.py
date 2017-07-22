@@ -5,6 +5,29 @@ class InputUtility:
     """"The class provides functionality to put validation on user input"""
 
     @staticmethod
+    def list_int_vldtn(message):
+
+        """Function to validate list of Integer input type from user.
+
+        :param message: message to be shown when to ask for the input
+        :type message:string
+        :return: List of integer value input given by user
+        :type List
+        """
+        raddi_list=[]
+        ttl_radius=InputUtility.int_rng_vldtn("How many radius you want to give",1,2000)
+
+        for x in range(ttl_radius):
+
+            while True:
+                try:
+                    raddi_list.insert(x,int(input(message+" "+str(x))))
+                    break
+                except ValueError:
+                    print("Oops!  That was not a valid number.  Try again...")
+        return raddi_list
+
+    @staticmethod
     def int_vldtn(message):
 
         """Function to validate integer input type from user.

@@ -4,53 +4,68 @@ from src.com.app.APPSummerProject.Coaster import Coaster
 from src.com.app.APPSummerProject.Cheers import CheersHelper
 
 
-"""ask radius of coaster from the user"""
+class Incarnation1:
 
-radius=iu.int_vldtn("Please enter the radius of the circle(Only numbers)")
+    """This class is the starting point of the Incarnation 1"""
 
-"""Object of coaster"""
+    def __init__(self):
+        """Inilization of Incarnation1
 
-coasterObj=Coaster(radius);
+        """
 
-"""to calculate alpha and lenght require to get area of overlap region, which will be half of one of the coaster"""
+        """ask radius of coaster from the user"""
+        radii_list = iu.list_int_vldtn("Enter Radius")
 
-cheersHelperObj=CheersHelper();
+        file_text = ""
 
-custom_length=cheersHelperObj.cal_length(cheersHelperObj.cal_alpha(), coasterObj.get_radius())
-fileText=FileUtility.formt_txt_result(radius, custom_length)
+        """Object of coaster"""
+        coaster_obj = []
 
-lib_fun_length=cheersHelperObj.sol_use_lib_fun(coasterObj.get_radius())
+        for x in range(radii_list.__len__()):
+            coaster_obj.insert(x, Coaster(radii_list[x]))
 
-fileText1=FileUtility.formt_txt_result(radius, lib_fun_length)
+        cheersHelperObj = CheersHelper();
 
-print("\n\n"+fileText)
+        for x in range(radii_list.__len__()):
+            custom_length = cheersHelperObj.cal_length(cheersHelperObj.cal_alpha(), coaster_obj[x].get_radius())
+            file_text = file_text + FileUtility.form_txt_result(coaster_obj[x].get_radius(), custom_length)
 
-"""To see the absolute error and relative error uncomment following code.
+        print("\n\n" + file_text)
 
-# print("Using Library function the results are\n\n")
-#
-# print(fileText1)
-#
-# abs_error=0
-# if (lib_fun_length-custom_length)<0:
-#     abs_error=-(lib_fun_length-custom_length)
-# else:
-#     abs_error = lib_fun_length - custom_length
-#
-# print("Absolute Error is ="+str(abs_error))
-#
-# print("Relative Error is ="+str(abs_error/lib_fun_length))
+        """To see the absolute error and relative error uncomment following code.
 
-"""
+        #lib_fun_length=cheersHelperObj.sol_use_lib_fun(coasterObj.get_radius())
+        #fileText1=FileUtility.form_txt_result(coaster_obj[x].get_radius(), lib_fun_length)
+        #
+        # print("Using Library function the results are\n\n")
+        #
+        # print(fileText1)
+        #
+        # abs_error=0
+        # if (lib_fun_length-custom_length)<0:
+        #     abs_error=-(lib_fun_length-custom_length)
+        # else:
+        #     abs_error = lib_fun_length - custom_length
+        #
+        # print("Absolute Error is ="+str(abs_error))
+        #
+        # print("Relative Error is ="+str(abs_error/lib_fun_length))
 
-save_in_file=iu.txt_vldtn("\nDo you want to save the result in text file(y/n)", ["y", "n"])
+        """
 
-if save_in_file=="y":
-    mode_of_file=iu.txt_vldtn("Do you want to append the result to previous file or do you want to create a new file(a/w)", ["a", "w"])
-    file_name=input("Please enter the name of the file where you want to store the result");
-    FileUtility.crt_txt_file(file_name, mode_of_file, fileText)
+        save_in_file = iu.txt_vldtn("\nDo you want to save the result in text file(y/n)", ["y", "n"])
 
-else:
-    print("Thanks for using our Application!")
+        if save_in_file == "y":
+            file_name = input("Please enter the name of the file where you want to store the result");
+            FileUtility.crt_txt_file(file_name, file_text)
+
+        else:
+            print("Thanks for using our Application!")
+
+
+Incarnation1()
+
+
+
 
 
