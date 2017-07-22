@@ -2,6 +2,7 @@
 
 
 class InputUtility:
+    """"The class provides functionality to put validation on user input"""
 
     @staticmethod
     def int_vldtn(message):
@@ -11,6 +12,7 @@ class InputUtility:
         :param message: message to be shown when to ask for the input
         :type message:string
         :return: value of integer input given by user
+        :type Int
         """
 
         while True:
@@ -30,6 +32,7 @@ class InputUtility:
         :param valid_values:List of valid values which is acceptable or are valid inputs
         :type valid_values:list
         :return: value of text input given by user
+        :type String
         """
 
         while True:
@@ -59,6 +62,7 @@ class InputUtility:
         :param end:Ending point of range
         :type end:int
         :return: value of integer input given by user
+        :type Int
         """
 
         while True:

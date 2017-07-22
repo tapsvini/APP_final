@@ -3,6 +3,8 @@ from src.util.UserInputUtil import InputUtility
 
 
 class MathUtility:
+    """This class provides the functionality to calculate value of sin and cos using tayler series, calculate value of
+    pi using chudnovsky algorithm or to find the factorial and round off number of a number"""
     @staticmethod
     def factorial(num):
 
@@ -11,6 +13,7 @@ class MathUtility:
         :param num:Number whose factorial is required
         :type num:int
         :return: factorial of a number
+        :type Int
         """
 
         if num<1:
@@ -29,6 +32,7 @@ class MathUtility:
         :param point:Total number needed after decimal point
         :type point:int
         :return:round off number
+        :type Decimal
         """
 
         scale = 10 ** point;
@@ -41,6 +45,7 @@ class MathUtility:
         """Calculating value of pi using chudnovsky_big algorithm.
 
         :return: value of pi
+        :type Decimal
         """
 
         pi = 0;
@@ -92,6 +97,7 @@ class MathUtility:
         :param no_of_iteration_for_accuracy: no of iteration for calculating value of pi using chudnovsky_big algorithm
         :type no_of_iteration_for_accuracy:int
         :return: value of pi
+        :type Decimal
         """
 
         pi = 0;
@@ -111,6 +117,7 @@ class MathUtility:
         """Function to calculate sin value using tayler series.
 
         :return: Value of sin using tayler series
+        :type Decimal
         """
 
         sine = 0;
@@ -161,6 +168,7 @@ class MathUtility:
         :param degree: value of alpha in radianas whose cosine value is needed
         :type degree:decimal
         :return: value of cosine
+        :type Decimal
         """
 
         cosx = 1

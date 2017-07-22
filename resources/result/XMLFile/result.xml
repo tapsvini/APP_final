@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE TestResult SYSTEM "sample.dtd">
-
-<TestResult>
-    <Radius>12</Radius>
-    <Length>14.295997005613195</Length>
-</TestResult>
 <TestResult>
     <Radius>12</Radius>
     <Length>14.295997005613195</Length>

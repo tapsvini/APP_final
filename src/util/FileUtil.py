@@ -4,6 +4,8 @@ from yattag import Doc, indent
 
 
 class FileUtility:
+    """The class provides the basic functions to deal with file like creation of xml or text file, validating xml file
+    finding weather file exist or not"""
 
     @staticmethod
     def validate_xml(filename):
@@ -13,6 +15,7 @@ class FileUtility:
         :param filename:filename(which should be xml) which is required to be validated
         :type filename:string
         :return: Print 'Validated' if it is wel formed and checked with schema, else 'Not Validated'
+        :type: void
         """
 
         parser = etree.XMLParser(dtd_validation=True);
@@ -32,6 +35,7 @@ class FileUtility:
         :param length: which is output after doing calculation
         :type length: int
         :return: string formatted for xml document
+        :type string
         """
 
         doc, tag, text = Doc().tagtext()
@@ -58,6 +62,7 @@ class FileUtility:
         :param file_path: full path of the file with name
         :type file_path:string
         :return: true if file exists, else false
+        :type Boolean
         """
 
         return os.path.exists(file_path)
@@ -74,6 +79,7 @@ class FileUtility:
         :param text:text which needs to be write into the filename
         :type text:string
         :return: print success or unsuccess message depending on whether xml file is created or not.
+        :type void
         """
 
         filepath = os.path.join('../../../../resources/result/XMLFile', filename + ".xml")
@@ -107,6 +113,7 @@ class FileUtility:
         :param length: length which is required to overlap two coaster with equal radii to get halp overlapping area.
         :type length:int
         :return: string which can be directly written into text file
+        :type String
         """
 
         return "The Radius entered by you is = "+str(radius)+" \nThe length require for overlapping area to be half of " \
@@ -124,6 +131,7 @@ class FileUtility:
         :param text:text which needs to be write into the filename
         :type text:string
         :return: print success or unsuccess message.
+        :type void
         """
 
         filepath = os.path.join('../resources/result/TestFile', filename+".txt")
@@ -136,3 +144,8 @@ class FileUtility:
             print("File " + filename + ".txt" + " is appended successfully!. Thanks for using our application!");
 
         file.close();
+
+
+
+# print(FileUtility.validate_xml("result.xml"))
+print(FileUtility.crt_txt_file.__doc__)

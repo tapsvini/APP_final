@@ -5,12 +5,14 @@ from math import cos
 from math import pi
 
 class CheersHelper:
+    """The class provides helper function to solve the cheers problem like calculating value of alpha and length."""
 
     def cal_alpha(self):
 
         """Function to calculate the value of alpha.
 
         :return:value of alpha
+        :type Decimal
         """
 
         self.customalpha= (Decimal(MathUtility.find_sin()) + Decimal(MathUtility.chudnovsky_big(30) / 2)) * Decimal(180 / 3.14)
@@ -27,6 +29,7 @@ class CheersHelper:
         :param cstr_radius:radius of Coaster
         :type cstr_radius:int
         :return: value of length require to get area of overlap region equals to half of one of the circle
+        :type Decimal
         """
 
         self.customLength=2*cstr_radius*(1 - MathUtility.find_cos(value_of_alpha / 2))
@@ -41,6 +44,7 @@ class CheersHelper:
         :type cstr_radius:int
         :return: returns the value of length require to get area of overlap region equals to half using inbuilt library
         function
+        :type Decimal
         """
 
         alpha=(Decimal(sin(132.4135*pi/180))+Decimal(pi/2))*Decimal(180/pi)

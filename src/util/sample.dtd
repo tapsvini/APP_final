@@ -1,0 +1,4 @@
+<!ELEMENT Cheers (TestResult+)>
+<!ELEMENT TestResult (Radius,Length)>
+<!ELEMENT Radius (#PCDATA)>
+<!ELEMENT Length (#PCDATA)>
