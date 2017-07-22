@@ -125,18 +125,18 @@ class MathUtility:
         :type Decimal
         """
 
-        sine = 0;
+        sin = 0;
 
         """This value is calculated by hand and the description in provided in the documentation"""
         degree = 132.4135
 
-        pi = MathUtility.chudnovsky_big(20);
+        pi = MathUtility.chudnovsky_big(no_of_terms);
         for i in range(no_of_terms):
             sign = (-1)**i;
-            y=Decimal(degree)*(pi/180);
-            sine = sine + ((y**(2*i+1))/MathUtility.factorial(2*i+1))*sign;
+            radians=Decimal(degree)*(pi/180);
+            sin = sin + ((radians**(2*i+1))/MathUtility.factorial(2*i+1))*sign;
 
-        return MathUtility.roundno(sine,round_off_digit)
+        return MathUtility.roundno(sin,round_off_digit)
 
 
     @staticmethod
@@ -154,17 +154,17 @@ class MathUtility:
         :type Decimal
         """
 
-        cosx = 1
+        cos = 1
         sign = -1
 
 
-        pi=MathUtility.chudnovsky_big(20);
+        pi=MathUtility.chudnovsky_big(no_of_terms);
         for i in range(2, no_of_terms, 2):
-            y=degree*(pi/180)
-            cosx = cosx + (sign*(y**i))/MathUtility.factorial(i)
+            radians=degree*(pi/180)
+            cos = cos + (sign*(radians**i))/MathUtility.factorial(i)
             sign = -sign
 
-        return MathUtility.roundno(cosx,round_off_digit)
+        return MathUtility.roundno(cos,round_off_digit)
 
     @staticmethod
     def abs_err(orig, cust):
