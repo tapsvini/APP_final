@@ -113,42 +113,22 @@ class MathUtility:
         return pi;
 
     @staticmethod
-    def find_sin():
+    def find_sin(no_of_terms,round_off_digit):
 
         """Function to calculate sin value using tayler series.
 
+        :param no_of_terms: Number of terms for calculating sin using tayler series
+        :type no_of_terms:Int
+        :param round_off_digit: Till how many decimal place we have to calculate sin value
+        :type round_off_digit:Int
         :return: Value of sin using tayler series
         :type Decimal
         """
 
         sine = 0;
-        round_of_true = 0;
-        input = InputUtility()
 
         """This value is calculated by hand and the description in provided in the documentation"""
         degree = 132.4135
-
-        no_of_terms = input.int_rng_vldtn("Enter no of terms to calculate value of sin(We are using Tayler series)"
-                                              "(Min:1,Max450)\n(Hint:-More number of terms more accurate result will be,But also increases "
-                                              "the time to calculate it)", 1, 450);
-
-        """ Ask user whether to round off the value of calculated sin or not"""
-
-        round_off_sin_true = input.txt_vldtn("Do you want us to round "
-                                                  " off the value of sin(Y/N)",
-                                             ["y", "n", "Y", "N", "Yes", "yes", "YES", "NO", "no"]);
-
-        """If user agrees on rounding off the value"""
-
-        if round_off_sin_true == "y" or round_off_sin_true == "Y" or round_off_sin_true == "Yes" or round_off_sin_true == "YES"\
-                or round_off_sin_true == "yes":
-
-            """Ask number of digit to round off"""
-
-            round_off_digit = input.int_rng_vldtn("Please enter the number of digit you want to consider in "
-                                                      "value of sin(Min 1, Max:27)", 1, 27);
-            round_of_true = 1;
-
 
         pi = MathUtility.chudnovsky_big(20);
         for i in range(no_of_terms):
@@ -156,47 +136,26 @@ class MathUtility:
             y=Decimal(degree)*(pi/180);
             sine = sine + ((y**(2*i+1))/MathUtility.factorial(2*i+1))*sign;
 
-        if round_of_true==1:
-            return MathUtility.roundno(sine,round_off_digit)
-        else:
-            return MathUtility.roundno(sine,27)
+        return MathUtility.roundno(sine,round_off_digit)
+
 
     @staticmethod
-    def find_cos(degree):
+    def find_cos(degree,no_of_terms,round_off_digit):
 
         """Function to calculat cos value using tayler series.
 
         :param degree: value of alpha in radianas whose cosine value is needed
         :type degree:decimal
+        :param no_of_terms: Number of terms for calculating cos using tayler series
+        :type no_of_terms:Int
+        :param round_off_digit: Till how many decimal place we have to calculate cos value
+        :type round_off_digit:Int
         :return: value of cosine
         :type Decimal
         """
 
         cosx = 1
-        round_of_true = 0;
-        input = InputUtility()
         sign = -1
-
-        no_of_terms = input.int_rng_vldtn("Enter no of terms to calculate value of cos(We are using Tayler series)"
-            "(Min:1,Max450)\n(Hint:-More number of terms more accurate result will be,But also increases "
-            "the time to calculate it)", 1, 450);
-
-        """Ask user whether to round off the value of calculated sin or not"""
-
-        round_off_cos_true = input.txt_vldtn("Do you want us to round "
-                                                  " off the value of cos(Y/N)",
-                                             ["y", "n", "Y", "N", "Yes", "yes", "YES", "NO", "no"]);
-
-        """If user agrees on rounding off the value"""
-
-        if round_off_cos_true == "y" or round_off_cos_true == "Y" or round_off_cos_true == "Yes" or \
-                        round_off_cos_true == "YES" or round_off_cos_true == "yes":
-
-            """Ask number of digit to round off"""
-
-            round_off_digit = input.int_rng_vldtn("Please enter the number of digit you want to consider in "
-                                                           "value of cos(Min 1, Max:27)", 1, 27);
-            round_of_true = 1;
 
 
         pi=MathUtility.chudnovsky_big(20);
@@ -205,10 +164,7 @@ class MathUtility:
             cosx = cosx + (sign*(y**i))/MathUtility.factorial(i)
             sign = -sign
 
-        if round_of_true==1:
-            return MathUtility.roundno(cosx,round_off_digit)
-        else:
-            return MathUtility.roundno(cosx,27)
+        return MathUtility.roundno(cosx,round_off_digit)
 
 
 

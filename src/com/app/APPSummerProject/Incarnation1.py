@@ -26,8 +26,31 @@ class Incarnation1:
 
         cheersHelperObj = CheersHelper();
 
+        no_of_terms = iu.int_rng_vldtn("Enter no of terms to calculate value of sin and cos(We are using Tayler series)"
+                                          "(Min:1,Max450)\n(Hint:-More number of terms more accurate result will be,But also increases "
+                                          "the time to calculate it)", 1, 450);
+
+        """ Ask user whether to round off the value of calculated sin, cos or not"""
+
+        round_off_true = iu.txt_vldtn("Do you want us to round "
+                                             " off the value of sin and cos(Y/N)",
+                                             ["y", "n", "Y", "N", "Yes", "yes", "YES", "NO", "no"]);
+
+        """If user agrees on rounding off the value"""
+
+        round_off_digit=25
+
+        if round_off_true == "y" or round_off_true == "Y" or round_off_true == "Yes" or round_off_true == "YES" \
+                or round_off_true == "yes":
+
+            """Ask number of digit to round off"""
+
+            round_off_digit = iu.int_rng_vldtn("Please enter the number of digit you want to consider in "
+                                                  "value of sin(Min 1, Max:27)", 1, 25);
+
         for x in range(radii_list.__len__()):
-            custom_length = cheersHelperObj.cal_length(cheersHelperObj.cal_alpha(), coaster_obj[x].get_radius())
+            custom_length = cheersHelperObj.cal_length(cheersHelperObj.cal_alpha(no_of_terms,round_off_digit),
+                                                       coaster_obj[x].get_radius(),no_of_terms,round_off_digit)
             file_text = file_text + FileUtility.form_txt_result(coaster_obj[x].get_radius(), custom_length)
 
         print("\n\n" + file_text)
