@@ -1,5 +1,6 @@
 from src.util.UserInputUtil import InputUtility as iu
 from src.util.FileUtil import FileUtility
+from src.util.MathUtil import MathUtility
 from src.com.app.APPSummerProject.Coaster import Coaster
 from src.com.app.APPSummerProject.Cheers import CheersHelper
 
@@ -48,33 +49,25 @@ class Incarnation1:
             round_off_digit = iu.int_rng_vldtn("Please enter the number of digit you want to consider in "
                                                   "value of sin(Min 1, Max:27)", 1, 25);
 
+        #length obtain using custom function
+        custom_length=[]
         for x in range(radii_list.__len__()):
-            custom_length = cheersHelperObj.cal_length(cheersHelperObj.cal_alpha(no_of_terms,round_off_digit),
-                                                       coaster_obj[x].get_radius(),no_of_terms,round_off_digit)
-            file_text = file_text + FileUtility.form_txt_result(coaster_obj[x].get_radius(), custom_length)
+            custom_length.insert(x,cheersHelperObj.cal_length(cheersHelperObj.cal_alpha(no_of_terms,round_off_digit),
+                                                       coaster_obj[x].get_radius(),no_of_terms,round_off_digit))
+            file_text = file_text + FileUtility.form_txt_result(coaster_obj[x].get_radius(), custom_length[x])
+
+        #length obtain using libraries calculation
+        lib_length = []
+        for x in range(radii_list.__len__()):
+            lib_length.insert(x, CheersHelper.sol_use_lib_fun(radii_list[x]))
+
+        for x in range(radii_list.__len__()):
+            print("\nFor radius "+str(radii_list[x]))
+            print("The absolute error is "+ str(MathUtility.abs_err(lib_length[x],custom_length[x])))
+            print("The relative error is " + str(MathUtility.rel_err(lib_length[x], custom_length[x])))
+            print("\n")
 
         print("\n\n" + file_text)
-
-        """To see the absolute error and relative error uncomment following code.
-
-        #lib_fun_length=cheersHelperObj.sol_use_lib_fun(coasterObj.get_radius())
-        #fileText1=FileUtility.form_txt_result(coaster_obj[x].get_radius(), lib_fun_length)
-        #
-        # print("Using Library function the results are\n\n")
-        #
-        # print(fileText1)
-        #
-        # abs_error=0
-        # if (lib_fun_length-custom_length)<0:
-        #     abs_error=-(lib_fun_length-custom_length)
-        # else:
-        #     abs_error = lib_fun_length - custom_length
-        #
-        # print("Absolute Error is ="+str(abs_error))
-        #
-        # print("Relative Error is ="+str(abs_error/lib_fun_length))
-
-        """
 
         save_in_file = iu.txt_vldtn("\nDo you want to save the result in text file(y/n)", ["y", "n"])
 

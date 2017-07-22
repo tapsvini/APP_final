@@ -166,5 +166,37 @@ class MathUtility:
 
         return MathUtility.roundno(cosx,round_off_digit)
 
+    @staticmethod
+    def abs_err(orig, cust):
+        """Function to calculate absoulte error
+
+        :param orig:Original value calculated with inbuilt libraries.
+        :type orig:Decimal
+        :param cust:Value we get after using custom calculation
+        :type cust:Decimal
+        :return:Absoulte error.
+        :type Decimal
+        """
+        if(orig-cust)<0:
+            return -(orig-cust)
+        else:
+            return (orig-cust)
+
+    @staticmethod
+    def rel_err(orig, cust):
+        """Function to calculate relative error
+
+        :param orig:Original value calculated with inbuilt libraries.
+        :type orig:Decimal
+        :param cust:Value we get after using custom calculation
+        :type cust:Decimal
+        :return:Relative Error.
+        :type Decimal
+        """
+        if (orig - cust) < 0:
+            return -(orig - cust)/orig
+        else:
+            return (orig - cust)/orig
+
 
 
