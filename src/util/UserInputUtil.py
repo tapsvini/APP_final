@@ -3,13 +3,14 @@
 
 class InputUtility:
 
-    def integerValidation(self,message):        # Function to validate integer input type from user
+    @staticmethod
+    def int_vldtn(message):
 
-        """
-        INPUT
+        """Function to validate integer input type from user.
 
-        message=message to be shown when to ask for the input
-
+        :param message: message to be shown when to ask for the input
+        :type message:string
+        :return: value of integer input given by user
         """
 
         while True:
@@ -19,16 +20,16 @@ class InputUtility:
             except ValueError:
                 print("Oops!  That was no valid number.  Try again...")
 
+    @staticmethod
+    def txt_vldtn(message, valid_values=[]):
 
+        """Function to validate input type from user with only valid values.
 
-    def textValidation(self,message,valid_values=[]):       # Function to validate input type from user with only valid values
-
-        """
-        INPUT
-
-        message=message to be shown when to ask for the input
-        valid_values=List of valid values which is acceptable or are valid inputs
-
+        :param message:message to be shown when to ask for the input
+        :type message:string
+        :param valid_values:List of valid values which is acceptable or are valid inputs
+        :type valid_values:list
+        :return: value of text input given by user
         """
 
         while True:
@@ -46,22 +47,23 @@ class InputUtility:
                 x,y=inst.args
                 print(y)
 
+    @staticmethod
+    def int_rng_vldtn(message, start, end):
 
-    def integerRangeValidation(self,message,start,end): # Function to validate integer input type from user with only
-        # values between start and end
+        """Function to validate integer input type from user with only.
 
-        """
-        INPUT
-
-        message=message to be shown when to ask for the input
-        Start=Starting point of range
-        end=Ending point of range
-
+        :param message:message to be shown when to ask for the input
+        :type message:string
+        :param start:Starting point of range
+        :type start:int
+        :param end:Ending point of range
+        :type end:int
+        :return: value of integer input given by user
         """
 
         while True:
             try:
-                input_value=self.integerValidation(message);
+                input_value=InputUtility.int_vldtn(message);
 
                 if start<=input_value<=end:
                     return input_value
