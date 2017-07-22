@@ -1,6 +1,6 @@
 # Guidelines for APP Project #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This is about the project we made in APP in summer 2017.
 
 ### What is this repository for? ###
 
@@ -8,7 +8,14 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I get set up? ###
 
-* There is no special instruction needed to setup the project just copy or clone the directory and start working.
+* For generating xml file we are using lxml and yattag library please install it before running the program.
+
+* To Run Incarnation 1 program just run Incarnation1.py present in src.com.app.APPSummerProject package.
+* For Documentation run PyDocDocumentaiton.py in src.com.app.APPSummerProject package and GenerateDocumentaition.py in 
+src.util package to see the documentation for Util classes 
+
+* To Run Incarnation 2 program just run Incarnation2.py present in src.com.app.APPSummerProject package.
+
 
 ### Contribution guidelines ###
 
