@@ -24,4 +24,4 @@ class Coaster:
         """
 
         obj=MathUtility();
-        return obj.chudnovsky_big(15) * self.__radius * self.__radius
+        return obj.chudnovsky_big(20) * self.__radius * self.__radius
