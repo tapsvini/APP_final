@@ -5,6 +5,8 @@ import math
 
 class TestCheersHelper(TestCase):
 
+    """Test Cases to test whether cheersHelper functionlity working properly or not"""
+
     def test_cal_alpha(self):
 
         """Test case to check weather alpha value is coming accurate.
