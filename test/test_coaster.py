@@ -1,4 +1,5 @@
 from unittest import TestCase
+from src.com.app.APPSummerProject.Coaster import Coaster
 
 
 class TestCoaster(TestCase):
