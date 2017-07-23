@@ -160,7 +160,7 @@ class MathUtility:
 
         pi=MathUtility.chudnovsky_big(no_of_terms);
         for i in range(2, no_of_terms, 2):
-            radians=degree*(pi/180)
+            radians=Decimal(degree)*(pi/180)
             cos = cos + (sign*(radians**i))/MathUtility.factorial(i)
             sign = -sign
 

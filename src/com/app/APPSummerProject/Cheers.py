@@ -40,7 +40,7 @@ class CheersHelper:
         :type Decimal
         """
 
-        self.customLength=2*cstr_radius*(1 - MathUtility.find_cos((value_of_alpha / 2),no_of_terms,round_off_digit))
+        self.customLength=2*cstr_radius*Decimal(1 - MathUtility.find_cos((value_of_alpha / 2),no_of_terms,round_off_digit))
         return self.customLength
 
     @staticmethod
