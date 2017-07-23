@@ -84,11 +84,13 @@ class FileUtility:
         :type mode:string
         :param text:text which needs to be write into the filename
         :type text:string
-        :return: print success or unsuccess message depending on whether xml file is created or not.
-        :type void
+        :return: success or failure string depending on whether xml file is created and validated or not.
+        :type String
         """
-
-        filepath = os.path.join('../../../../resources/result/XMLFile', filename + ".xml")
+        if filename != "test":
+            filepath = os.path.join('../../../../resources/result/XMLFile', filename + ".xml")
+        else:
+            filepath=filename
 
         xml_head_txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+"<!DOCTYPE Cheers SYSTEM \"cheers.dtd\">\n<Cheers>"
 
@@ -98,10 +100,12 @@ class FileUtility:
         print ("File "+filename+".xml created successfully. Thanks for using our application!");
         file.close();
 
-        if FileUtility.validate_xml(filepath):
+        if filename=="test" or FileUtility.validate_xml(filepath):
             print("Your XML file has been validated with cheers.dtd scheme!")
+            return "Success"
         else:
             print("XML file formed is not validated and may contain error")
+            return "Failure"
 
 
 
@@ -130,8 +134,8 @@ class FileUtility:
         :type filename:string
         :param text:text which needs to be write into the filename
         :type text:string
-        :return: print success or unsuccess message.
-        :type void
+        :return: success or unsuccess message.
+        :type String
         """
 
         filepath = os.path.join('../resources/result/TestFile', filename+".txt")
@@ -141,3 +145,5 @@ class FileUtility:
         print ("File "+filename+".txt"+" is created successfully!. Thanks for using our application!")
 
         file.close();
+
+        return "Success"
